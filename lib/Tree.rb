@@ -131,6 +131,22 @@ class Tree
     return count
   end
 
+  def depth(node, root = @root, count = 0)
+    node = find(node.value)
+    unless(node)
+      return "Node is not in tree"
+    end
+    if(root == nil)
+      return count
+    end
+    if(node.value > root.value)
+      count = count + 1 + depth(node, root.right, count)
+    elsif(node.value < root.value)
+      count = count + 1 + depth(node, root.left, count)
+    end
+    return count
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.value}"
