@@ -1,12 +1,10 @@
 class Node
-  attr_accessor :value, :left_child, :right_child
+  attr_accessor :value, :left, :right
 
   def initialize(value)
     @value = value
-    @left_child = nil
-    @right_child = nil
-
-    puts "Node init"
+    @left = nil
+    @right = nil
   end
 
 
