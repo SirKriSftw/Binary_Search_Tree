@@ -87,8 +87,8 @@ class Tree
 
   def find(value, node = @root)
     if (node == nil)
-      puts "\n#{value} not found\n\n"
-      return @root
+      print "#{value} not found. "
+      return Node.new(-1)
     end
     if(value > node.value)
       find(value, node.right)
@@ -116,6 +116,18 @@ class Tree
       level_order_arr.push(nodes_arr.shift.value)
     end
     return level_order_arr
+  end
+
+  def height(node, count = 0)
+    if(node.value == -1)
+      return "Node is not in tree"
+    end
+    if(node.right != nil)
+      count = count + 1 + height(node.right, count)
+    elsif(node.left != nil)
+      count = count + 1  + height(node.left, count)
+    end
+    return count
   end
 
   def pretty_print(node = @root, prefix = '', is_left = true)
