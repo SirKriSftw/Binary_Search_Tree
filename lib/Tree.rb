@@ -36,6 +36,55 @@ class Tree
     end
   end
 
+  def delete(value, node = @root)
+
+    # Base case
+    if(node == nil)
+      return node
+    end
+
+    # First find which way to go
+    if(value < node.value)
+      node.left = delete(value, node.left)
+      return node
+    elsif(value > node.value)
+      node.right = delete(value, node.right)
+      return node
+    end
+    # Once Node is found
+    # Check for case of 1 or No children
+    if(node.left == nil)
+      temp = node.right
+      node.value = nil
+      return temp
+    elsif(node.right == nil)
+      temp = node.left
+      node.value = nil
+      return temp
+    end
+
+    # Case of 2 children, find successor (left-most right subtree child)
+    successorParent = node
+    successor = node.right
+    while(successor.left != nil) do
+      successorParent = successor
+      successor = successor.left
+    end
+
+    # SWAP node to be deleted with successor
+    node.value = successor.value
+
+    # Append children of the deleted parent to sucessor parent
+    if(successorParent.left == successor)
+        successorParent.left = successor.right
+    else
+      successorParent.right = successor.right
+    end
+
+    successor = nil
+    return node
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.value}"
