@@ -11,6 +11,7 @@ test_tree.pretty_print
 #test_tree.delete(nodes.uniq.sort[(nodes.length - 1)/2])
 #test_tree.delete(5)
 #test_tree.pretty_print
-node_to_find = rand(0..20)
-puts "\nFinding node #{node_to_find}\n"
-test_tree.pretty_print(test_tree.find(node_to_find))
+#node_to_find = rand(0..20)
+#puts "\nFinding node #{node_to_find}\n"
+#test_tree.pretty_print(test_tree.find(node_to_find))
+p test_tree.level_order

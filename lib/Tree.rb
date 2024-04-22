@@ -99,6 +99,25 @@ class Tree
     end
   end
 
+  def level_order(node = @root)
+    if(node == nil)
+      return nil
+    end
+    level_order_arr = []
+    nodes_arr = [node]
+    while(!nodes_arr.empty?) do
+      current = nodes_arr[0]
+      if(current.left != nil)
+        nodes_arr.push(current.left)
+      end
+      if(current.right != nil)
+        nodes_arr.push(current.right)
+      end
+      level_order_arr.push(nodes_arr.shift.value)
+    end
+    return level_order_arr
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.value}"
