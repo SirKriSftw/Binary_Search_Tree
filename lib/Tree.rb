@@ -18,7 +18,23 @@ class Tree
     root
   end
 
-
+  def insert(value, node = @root)
+    if(value > node.value)
+      if(node.right == nil)
+        node.right = Node.new(value)
+        return "#{value} inserted"
+      end
+      insert(value, node.right)
+    elsif (value < node.value)
+      if(node.left == nil)
+        node.left = Node.new(value)
+        return "#{value} inserted"
+      end
+      insert(value, node.left)
+    else
+    return "#{value} is already in tree"
+    end
+  end
 
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
