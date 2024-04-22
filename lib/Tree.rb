@@ -147,6 +147,21 @@ class Tree
     return count
   end
 
+  def balanced?(node = @root)
+    if(node.right != nil && node.left != nil)
+      height_diff = (height(node.right) - height(node.left)).abs
+    elsif (node.right != nil)
+      height_diff = height(node.right) + 1
+    else
+      height_diff = height(node.left) + 1
+    end
+    p height_diff
+    if(height_diff == 1 || height_diff == 0)
+      return true
+    end
+      return false
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.value}"
