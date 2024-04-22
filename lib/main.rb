@@ -15,7 +15,6 @@ test_tree.pretty_print
 #puts "\nFinding node #{node_to_find}\n"
 #test_tree.pretty_print(test_tree.find(node_to_find))
 #p test_tree.level_order
-
 #new_node = Node.new(rand(1..20))
 #print "Height for #{new_node.value}: "
 #puts test_tree.height(new_node)
@@ -23,5 +22,8 @@ test_tree.pretty_print
 #puts test_tree.depth(new_node)
 test_tree.insert(rand(21..30))
 test_tree.insert(rand(21..30))
+test_tree.pretty_print
+p test_tree.balanced?
+test_tree.rebalance
 test_tree.pretty_print
 p test_tree.balanced?
