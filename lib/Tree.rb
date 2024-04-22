@@ -88,7 +88,7 @@ class Tree
   def find(value, node = @root)
     if (node == nil)
       print "#{value} not found. "
-      return Node.new(-1)
+      return false
     end
     if(value > node.value)
       find(value, node.right)
@@ -119,7 +119,8 @@ class Tree
   end
 
   def height(node, count = 0)
-    if(node.value == -1)
+    node = find(node.value)
+    unless(node)
       return "Node is not in tree"
     end
     if(node.right != nil)

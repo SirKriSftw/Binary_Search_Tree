@@ -18,4 +18,4 @@ p test_tree.level_order
 test_tree.pretty_print
 new_node = Node.new(rand(1..20))
 print "Height for #{new_node.value}: "
-puts test_tree.height(test_tree.find(new_node.value))
+puts test_tree.height(new_node)
